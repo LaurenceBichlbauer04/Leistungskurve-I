@@ -1,5 +1,7 @@
 #power curve
 import pandas as pd
+import matplotlib.pyplot as plt
+import sort
 
 def getData():
     
@@ -8,3 +10,5 @@ def getData():
     print(df)
     return df
 
+def getFigure(Data):
+    plt.plot(Data)
