@@ -1,14 +1,8 @@
 #power curve
-import pandas as pd
 import matplotlib.pyplot as plt
-
-
-def getData():
-    
-    df = pd.read_csv("activity.csv")
-
-    #print(df)
-    return df
+import power_curve
+import sort
+import load_data
 
 def getFigure(data):
 
@@ -22,5 +16,19 @@ def getFigure(data):
     plt.ylabel("Power")
     plt.title("Leistungskurve")
 
+    plt.savefig("figures/Leistungskurve.png")
 
     plt.show()
+    
+
+
+def Leistungskurve():
+    data = load_data.getData()
+    data_list = data.to_dict("records")
+
+    data_sort = sort.bubble_sort_desc(data_list)
+    #print(data_sort[:10])
+    power_curve.getFigure(data_sort)
+
+
+Leistungskurve()
